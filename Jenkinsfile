@@ -4,6 +4,7 @@ pipeline {
     registry = "kildarejoe1/jenkinstest"
     registryCredential = 'dockerhub'
   }
+  
   agent any
 
   }
@@ -15,6 +16,7 @@ pipeline {
        }
      }
   }
+    
     stage('build') {
       steps {
         sh 'python --version'
@@ -32,6 +34,5 @@ pipeline {
         sh 'echo Deploying to Production'
       }
     }
-
   }
 }
