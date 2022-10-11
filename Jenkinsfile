@@ -1,21 +1,15 @@
 pipeline {
-  
-  environment {
-    registry = "kildarejoe1/jenkinstest"
-    registryCredential = 'dockerhub'
-  }
-  
   agent any
-
   stages {
     stage('Create Docker Image') {
-     steps {
-       script { 
-        docker.build registry + ":$BUILD_NUMBER"
-       }
-     }
-  }
-    
+      steps {
+        script {
+          docker.build registry + ":$BUILD_NUMBER"
+        }
+
+      }
+    }
+
     stage('build') {
       steps {
         sh 'python --version'
@@ -33,5 +27,10 @@ pipeline {
         sh 'echo Deploying to Production'
       }
     }
+
+  }
+  environment {
+    registry = 'kildarejoe1/jenkinstest'
+    registryCredential = 'dockerhub'
   }
 }
