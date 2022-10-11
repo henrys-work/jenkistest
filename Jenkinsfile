@@ -9,7 +9,11 @@ pipeline {
 
       }
     }
-
+    
+     stage("run docker container"){
+       sh "sudo docker run -p 5000:5000 --name flask-app -d ${ dockerImage } "
+     }
+    
     stage('Upload Docker Image to Docker Hub') {
       steps {
         script {
