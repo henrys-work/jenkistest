@@ -6,14 +6,16 @@ pipeline {
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
+
       }
     }
-    
-     stage('run docker container') {
-       steps {
-       sh "sudo docker run -p 5000:5000 --name flask-app -d ${ dockerImage } "
-     }
-     }
+
+    stage('run docker container') {
+      steps {
+        sh "sudo docker run -p 5000:5000 --name flask-app -d ${ dockerImage } "
+      }
+    }
+
     stage('Upload Docker Image to Docker Hub') {
       steps {
         script {
