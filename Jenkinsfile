@@ -6,25 +6,27 @@ pipeline {
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
+
       }
     }
 
-   stage('Upload Docker Image to Docker Hub') {
-      steps{    
+    stage('Upload Docker Image to Docker Hub') {
+      steps {
         script {
           docker.withRegistry( '', registryCredential ) {
-          dockerImage.push()
+            dockerImage.push()
+          }
+        }
+
       }
     }
-  }
-}
-    
-   stage('Remove Unused docker image') {
-     steps{
-       sh "docker rmi $registry:$BUILD_NUMBER"
-  }
-}
-    
+
+    stage('Remove Unused docker image') {
+      steps {
+        sh "docker rmi $registry:$BUILD_NUMBER"
+      }
+    }
+
     stage('build') {
       steps {
         sh 'python --version'
@@ -48,6 +50,5 @@ pipeline {
     registry = 'kildarejoe1/jenkinstest'
     registryCredential = 'dockerhub'
     dockerImage = ''
-    
   }
 }
