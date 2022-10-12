@@ -5,7 +5,7 @@ pipeline {
       steps {
         script {
           dockerImage = docker.build registry + ":$BUILD_NUMBER"
-          sh """docker run -p 5000:5000 --name flask-app -d ${dockerImage}"""
+          sh """docker run -p 5000:5000 --name flask-app -d ${env.dockerImage}"""
         }
 
       }
