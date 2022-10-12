@@ -55,5 +55,6 @@ pipeline {
   environment {
     registry = 'kildarejoe1/jenkinstest'
     registryCredential = 'dockerhub'
+    dockerImage = ''
   }
 }
