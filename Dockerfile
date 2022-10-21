@@ -12,4 +12,4 @@ COPY . /app
 
 
 
-CMD [ "PYTHON", "app.py"]
+CMD [ "python", "/app/app.py"]
