@@ -3,10 +3,7 @@ pipeline {
   stages {
     stage('Create Docker Image') {
       steps {
-        script {
-          dockerImage = docker.build flask-app
-        }
-
+       sh 'docker build -t flask-app:latest .'
       }
     }
 
