@@ -6,7 +6,7 @@ pipeline {
         sh 'docker build -t flask-app:latest .'
       }
     }
-    }
+    
 
     stage('Unit testing of Application') {
       steps {
