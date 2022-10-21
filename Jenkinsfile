@@ -6,7 +6,6 @@ pipeline {
         sh 'docker build -t flask-app:latest .'
       }
     }
-    
 
     stage('Unit testing of Application') {
       steps {
@@ -43,7 +42,6 @@ pipeline {
       }
     }
 
-   
     stage('Deployment to Heroku') {
       steps {
         sh 'echo Deploying to Production'
