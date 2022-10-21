@@ -6,10 +6,17 @@ pipeline {
         sh 'docker build -t flask-app:latest .'
       }
     }
+    }
+
+    stage('Unit testing of Application') {
+      steps {
+        sh 'echo Testing'
+      }
+    }
 
     stage('run docker container') {
       steps {
-        sh 'docker run -p 5000:5000 --name flask-app6 -d flask-app'
+        sh 'docker run -p 5000:5000 --name flask-app7 -d flask-app'
       }
     }
 
@@ -36,13 +43,8 @@ pipeline {
       }
     }
 
-    stage('test') {
-      steps {
-        sh 'echo Testing'
-      }
-    }
-
-    stage('Deployment') {
+   
+    stage('Deployment to Heroku') {
       steps {
         sh 'echo Deploying to Production'
       }
